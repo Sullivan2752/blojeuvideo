@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique</title>
+    <link rel="stylesheet" href="style_boutique.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="boutique.html">Boutique</a></li>
+                <li><a href="vidéo.html">Vidéos</a></li>
+                <li><a href="Page de contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="products">
+            <h1>Nos Produits</h1>
+            <div class="product-card">
+                <img src="jeu1.jpg" alt="Jeu 1">
+                <h2>Jeu 1</h2>
+                <p>Prix: 29.99€</p>
+                <button class="add-to-cart" onclick="addToCart('Jeu 1', 29.99)">Ajouter au panier</button>
+            </div>
+            <div class="product-card">
+                <img src="jeu2.jpg" alt="Jeu 2">
+                <h2>Jeu 2</h2>
+                <p>Prix: 39.99€</p>
+                <button class="add-to-cart" onclick="addToCart('Jeu 2', 39.99)">Ajouter au panier</button>
+            </div>
+        </section>
+
+        <section id="cart">
+            <h2>Votre Panier</h2>
+            <ul id="cart-items"></ul>
+            <button onclick="checkout()">Procéder au paiement</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Blog Jeux Vidéo</p>
+    </footer>
+
+    <script>
+        let cart = [];
+
+        function addToCart(product, price) {
+            cart.push({ product, price });
+            displayCart();
+        }
+
+        function displayCart() {
+            const cartItems = document.getElementById('cart-items');
+            cartItems.innerHTML = '';
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.product} - ${item.price}€`;
+                cartItems.appendChild(li);
+            });
+        }
+
+        function checkout() {
+            alert('Paiement effectué');
+        }
+    </script>
+</body>
+</html>
+
